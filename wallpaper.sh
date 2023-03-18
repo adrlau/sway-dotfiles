@@ -1,10 +1,11 @@
 #!/bin/sh
-swaybg -i $(find ./Wallpapers -type f | shuf -n 1) -m fill &
+dir=/home/gunalx/.config/sway/Wallpapers 
+swaybg -i $(find $dir -type f | shuf -n 1) -m fill &
 
 OLD_PID=$!
 while true; do
     sleep 6000
-    swaybg -i $(find ./Wallpapers -type f | shuf -n1) -m fill &
+    swaybg -i $(find $dir -type f | shuf -n1) -m fill &
     NEXT_PID=$!
     sleep 5
     kill $OLD_PID

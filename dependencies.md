@@ -9,7 +9,8 @@ waybar #instead of swaybar
 i3status-rust         # have not actually loocked into it, but seems promising with swaybar if waybar is not the better solution
 networkmanager-applet # not properly implemented 
 
-
+#gui display configurator
+wdisplays
 
 #lockscreen
 swaylock-effects

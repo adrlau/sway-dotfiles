@@ -20,19 +20,19 @@ set $dir /home/gunalx/.config/sway
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu dmenu_path | dmenu | xargs swaymsg exec -- 
-
+set $primary_display eDP-1
 
 #startup
 input type:keyboard xkb_capslock disabled
 input type:keyboard xkb_numlock enabled
-
+xwayland enable
 
 #autostart applications
 #exec $dir/autostart.sh
-assign [app_id="autostart1"] workspace 1
-assign [app_id="autostart2"] workspace 2
-assign [app_id="autostart3"] workspace 3
-assign [app_id="autostart4"] workspace 4
+assign [class="autostart1"] workspace 1
+assign [class="autostart2"] workspace 2
+assign [class="autostart3"] workspace 3
+assign [class="autostart4"] workspace 4
 
 exec $term --class autostart1
 exec firefox --class autostart2
@@ -49,9 +49,15 @@ exec code --class autostart3
 
 
 ### Output configuration
-#
+#display configuration
+exec swaymsg focus output eDP-1
+output eDP-1 pos 0 0 res 3840x216
+output DP-1 pos 1920 0
+output DP-2 pos 1920 0
+
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/vaporwave-Sun-mountains-1408599-2364227326.jpg fill
+
 #output * bg (find ./Wallpapers -type f | shuf -n 1) fill
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 exec $dir/wallpaper.sh
@@ -61,8 +67,11 @@ exec $dir/wallpaper.sh
 bindsym $mod+m exec $dir/lock.sh &&  brightnessctl -d intel_backlight s 50% 
 exec $dir/idle.sh
 
+#gaps
+#gaps set 2
 
-### Input configuration # You can get the names of your inputs by running: swaymsg -t get_inputs
+### Input configuration
+ # You can get the names of your inputs by running: swaymsg -t get_inputs
 input "1739:30383:DELL07E6:00_06CB:76AF_Touchpad" {
     dwt enabled
     tap enabled
@@ -73,6 +82,8 @@ input * {
         xkb_layout "no"
         #xkb_variant ""
 }
+
+
 
 
 #
@@ -87,7 +98,7 @@ input * {
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+d exec  $menu 
 
     #bind system keys:
     bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -100,6 +111,10 @@ input * {
     bindsym XF86AudioNext exec playerctl next
     bindsym XF86AudioPrev exec playerctl previous
     bindsym XF86Search exec $menu
+
+
+    #shortcuts for applications
+    bindsym $mod+Shift+f exec firefox
 
 
     #screenshot
@@ -162,7 +177,7 @@ input * {
     bindsym $mod+7 workspace number 7
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 0
+    bindsym $mod+0 workspace number 10
     # Move focused container to workspace
     #bindsym $mod+Shift+'|' move container to workspace number 0 #like on switch
     bindsym $mod+Shift+1 move container to workspace number 1
@@ -174,7 +189,7 @@ input * {
     bindsym $mod+Shift+7 move container to workspace number 7
     bindsym $mod+Shift+8 move container to workspace number 8
     bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 0
+    bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 #
@@ -211,8 +226,6 @@ input * {
     # Move the currently focused window to the scratchpad
     bindsym $mod+Shift+minus move scratchpad
 
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
 #
 # Resizing containers:
@@ -239,6 +252,9 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+#rotate window
+
+bindsym $mod+Shift+w exec wdisplays
 
 
 
