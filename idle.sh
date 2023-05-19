@@ -1,7 +1,7 @@
 swayidle \
-	timeout 300 '~/.config/sway/idlelock.sh' \
-	timeout 600 'swaymsg "output * dpms off"' \
+	timeout 120 '/home/gunalx/.config/sway/idlelock.sh' \
+	timeout 180 'swaymsg "output * dpms off"' \
 	resume 'swaymsg "output * dpms on"' \
-	before-sleep '~/.config/sway/idlelock.sh'
+	before-sleep '/home/gunalx/.config/sway/idlelock.sh'
 
 

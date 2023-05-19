@@ -10,7 +10,7 @@ i3status-rust         # have not actually loocked into it, but seems promising w
 networkmanager-applet # not properly implemented 
 
 #gui display configurator
-wdisplays
+wdisplays  #kinda breaks when reloading. 
 
 #lockscreen
 swaylock-effects
@@ -18,6 +18,9 @@ swayidle
 
 #terminal
 foot
+
+#menu 
+wofi
 
 #brightnesscontrol
 brightnessctl 
@@ -33,10 +36,15 @@ slurp
 swaybg
 
 #div
-sway-dynamic-names     #really buggy, but kinda nice
+sway-dynamic-names     #really buggy, but kinda nice auto emoji, waiting for patch to 1 index
 ttf-fonts-awesome      #at least used by dynamic names, and cool to have.
 otf-font-awesome       #same as above
 find                   #used for finding raondom background screens
+
+i3ipc #kinda cool python stuff for https://github.com/nwg-piotr/swayinfo
+
+
+
 
 
 #hidpi kinda optional

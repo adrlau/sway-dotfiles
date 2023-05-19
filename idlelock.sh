@@ -19,6 +19,6 @@ swaylock -e \
        	--effect-scale 2 \
 	--effect-vignette 0.5:0.5 \
 #	--effect-compose "50%,50%;20%x20%;center;$HOME/.config/sway/lockscreen.jpg" \
-	"$@"
-
+	"$@" \
+&& \
 brightnessctl -d intel_backlight s 50% 
