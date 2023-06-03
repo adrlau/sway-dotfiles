@@ -11,7 +11,8 @@ set $up k
 set $right l
 
 # Your preferred terminal emulator
-set $term foot
+set $term footclient
+exec foot --server
 
 #directory of this config for global script and asset location 
 set $dir /home/gunalx/.config/sway
@@ -37,7 +38,7 @@ assign [class="autostart4"] workspace 4
 
 exec firefox
 exec $term --class autostart2
-exec code --class autostart3
+#exec code --class autostart3
 
 
 #add dynamic names/emojis to workspaces using sway-dynamic-names --found this to be really buggy with 0 indexing, and dedicating workspaces
@@ -105,7 +106,9 @@ input * {
 
     #bind system keys:
     bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym F3 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
     bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym F2 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
     bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
     bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
     bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
