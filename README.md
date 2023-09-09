@@ -1,4 +1,5 @@
 # sway-dotfiles
 my dotfiles to the sway window manager
+Pretty standard.
 
-Please contact me or add a issue if you have any questions.
+I take no responsibility for usage.
