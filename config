@@ -21,7 +21,10 @@ set $dir /home/gunalx/.config/sway
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 #set $menu dmenu_path | dmenu | xargs swaymsg exec -- 
-set $menu dmenu_path | wofi --dmenu --y 20 --heigth 60% --width 100% --font "Hack-Bold 12" | xargs swaymsg exec --
+#set $menu dmenu_path | wofi --dmenu --y 20 --heigth 60% --width 100% --font "Hack-Bold 12" | xargs swaymsg exec --
+
+set $menu dmenu_path | wofi --dmenu | xargs swaymsg exec --
+
 set $primary_display eDP-1
 
 #startup
@@ -135,6 +138,7 @@ input * {
 
     #shortcuts for applications
     bindsym $mod+Shift+f exec firefox
+    bindsym $mod+Shift+c exec code
 
 
     #screenshot
@@ -322,3 +326,6 @@ exec waybar -c $dir/waybar.d/config -s $dir/waybar.d/style.css
 
 #run nm-applet for wifi in waybar
 exec nm-applet
+
+# add autotiler
+exec autotiler-rs
