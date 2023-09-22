@@ -328,4 +328,9 @@ exec waybar -c $dir/waybar.d/config -s $dir/waybar.d/style.css
 exec nm-applet
 
 # add autotiler
-exec autotiler-rs
+exec autotiling-rs
+# add autonamer
+exec workstyle 
+
+exec /usr/lib/polkit-kde-authentication-agent-1
+

@@ -37,14 +37,18 @@ swaybg
 
 #div
 sway-dynamic-names     #really buggy, but kinda nice auto emoji, waiting for patch to 1 index
+workstyle-git  # seems like an alternative.
 ttf-fonts-awesome      #at least used by dynamic names, and cool to have.
 otf-font-awesome       #same as above
 find                   #used for finding raondom background screens
 
+found nerdfonts to be better
+
+
 i3ipc #kinda cool python stuff for https://github.com/nwg-piotr/swayinfo
 
 
-
+autotiling-rs # autotiler written in rust
 
 
 #hidpi kinda optional
