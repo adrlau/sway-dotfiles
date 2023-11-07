@@ -44,6 +44,7 @@ find                   #used for finding raondom background screens
 
 found nerdfonts to be better
 
+qt5c #for themes
 
 i3ipc #kinda cool python stuff for https://github.com/nwg-piotr/swayinfo
 

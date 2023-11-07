@@ -21,7 +21,7 @@ set $dir /home/gunalx/.config/sway
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 #set $menu dmenu_path | dmenu | xargs swaymsg exec -- 
-#set $menu dmenu_path | wofi --dmenu --y 20 --heigth 60% --width 100% --font "Hack-Bold 12" | xargs swaymsg exec --
+#set $menu dmenu_path | wofi --dmenu --x 20%  --y 20 --heigth 60% --width 60% | xargs swaymsg exec --
 
 set $menu dmenu_path | wofi --dmenu | xargs swaymsg exec --
 
@@ -71,7 +71,6 @@ exec /home/gunalx/.config/sway/wallpaper.sh
 bindsym $mod+m exec $dir/lock.sh &&  brightnessctl -d intel_backlight s 50% 
 exec /home/gunalx/.config/sway/idle.sh
 
-exec_always --no-startup-id exec sway-dynamic-names
 
 #gaps
 smart_borders               no_gaps 
@@ -330,7 +329,37 @@ exec nm-applet
 # add autotiler
 exec autotiling-rs
 # add autonamer
-exec workstyle 
+exec workstyle
+# add autnamer
+exec_always --no-startup-id exec sway-dynamic-names
 
+# authentication polkit with kde (update if not installed)
 exec /usr/lib/polkit-kde-authentication-agent-1
+
+# Generated windows as floating
+for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable;
+for_window [title="(?:Open|Save) (?:File|Folder|As)"] resize set 1920 1080
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [app_id = "xdg-desktop-portal-gtk"] floating enable;
+for_window [app_id = "xdg-desktop-portal-gtk"] resize set 1920 1080;
+for_window [app_id = "xdg-desktop-portal-gtk"] floating enable;
+for_window [app_id = "xdg-desktop-portal-gtk"] resize set 1920 1080;
+
+# styles.
+set $QT_QPA_PLATFORMTHEME qt5c
+set $accent #00ffcc
+# class                 border	backgr.	text	indica.	child_border
+client.focused			$accent $accent #000000 #00ffcc $accent
+client.focused_inactive	#000000 #000000 #ff9900 #000000 #000000
+client.unfocused		#000000 #000000 #00ffcc #000000 #000000
+client.urgent			#ff0000 #ff0000 #00ffcc #ff0000 #ff0000
+client.placeholder		#000000 #000000 #00ffcc #000000 #000000
+client.background		#000000
+
+#exec gsetting set org.
 

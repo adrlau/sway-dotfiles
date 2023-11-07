@@ -5,7 +5,7 @@ swaybg -i $(find $dir -type f | shuf -n 1) -m fill &&
 
 OLD_PID=$!
 while true; do
-    sleep 300
+    sleep 10
     swaybg -i $(find $dir -type f | shuf -n1) -m fill &
     NEXT_PID=$!
     sleep 5
