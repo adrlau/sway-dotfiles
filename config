@@ -56,9 +56,11 @@ exec $term --class autostart2
 ### Output configuration
 #display configuration
 exec swaymsg focus output eDP-1
-output eDP-1 pos 0 360 res 3840x2160
+output eDP-1 pos 0 0 res 3840x2160
 #output DP-1 pos 3840 0 res 3440x1440
-#output DP-2 pos 1920 0
+#output DP-2 pos 3840 0 res 3440x1440
+#output DP-3 pos 3840 0 res 3440x1440
+#output DP-4 pos 3840 0 res 3440x1440
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/vaporwave-Sun-mountains-1408599-2364227326.jpg fill
@@ -98,9 +100,11 @@ input "1739:30383:DELL07E6:00_06CB:76AF_Touchpad" {
     natural_scroll enabled
     middle_emulation enabled
 }
-input * {
-        xkb_layout "no"
-        #xkb_variant ""
+input type:keyboard  {
+        xkb_layout no,us
+        xkb_variant winkeys,intl
+	xkb_options grp:ctrl_space_toggle
+        xkb_numlock enabled # enable numlock when logging in
 }
 
 
@@ -281,42 +285,6 @@ bindsym $mod+r mode "resize"
 #rotate window
 
 bindsym $mod+Shift+w exec wdisplays
-
-
-
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-#bar {
-#    position top
-#
-#    # When the status_command prints a new line to stdout, swaybar updates.
-#    # The default just shows the current date and time.
-#    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-#
-#    colors {
-#        statusline #ffffff
-#        background #323232
-#        inactive_workspace #32323200 #32323200 #5c5c5c
-#    }
-#}
-
-
-#bar {
-#    position top
-#
-#    # When the status_command prints a new line to stdout, swaybar updates.
-#    # The default just shows the current date and time.
-#    status_command while ~/.config/sway/status.sh  ; do sleep 1; done
-#
-#    colors {
-#        statusline #ffffff
-#        background #323232
-#        inactive_workspace #32323200 #32323200 #5c5c5c
-#    }
-#}
-
 
 include /etc/sway/config.d/*
 
