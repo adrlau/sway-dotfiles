@@ -102,7 +102,7 @@ input "1739:30383:DELL07E6:00_06CB:76AF_Touchpad" {
 }
 input type:keyboard  {
         xkb_layout no,us
-        xkb_variant winkeys,intl
+        xkb_variant winkeys,
 	xkb_options grp:ctrl_space_toggle
         xkb_numlock enabled # enable numlock when logging in
 }
@@ -143,6 +143,8 @@ input type:keyboard  {
     bindsym $mod+Shift+f exec firefox
     bindsym $mod+Shift+c exec code
 
+    bindsym Control+Shift+Mod4+Mod1+l exec xdg-open 'https://www.linkedin.com/'
+    bindsym Control+Shift+Mod4+Mod1+m exec xdg-open 'https://myanimelist.net/'
 
     #screenshot
     bindsym $mod+f11 exec /home/gunalx/.config/sway/screenshot.sh
@@ -165,6 +167,20 @@ input type:keyboard  {
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+
+#
+# Gestures:
+#
+#swap workspace
+bindgesture swipe:3:right workspace next
+bindgesture swipe:3:left workspace prev
+#move windows
+bindgesture swipe:4:up move up
+bindgesture swipe:4:down move down
+bindgesture swipe:4:left move left
+bindgesture swipe:4:right move right
+
 
 
 #
@@ -294,6 +310,8 @@ exec waybar -c $dir/waybar.d/config -s $dir/waybar.d/style.css
 #run nm-applet for wifi in waybar
 exec nm-applet
 
+exec bluberry-tray
+
 # add autotiler
 exec autotiling-rs
 # add autonamer
@@ -303,9 +321,13 @@ exec_always --no-startup-id exec sway-dynamic-names
 
 # authentication polkit with kde (update if not installed)
 exec /usr/lib/polkit-kde-authentication-agent-1
+##gparted depends on gnome polkit
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Generated windows as floating
+for_window [title="(?:Notification|Message) (?:File|Folder|As)"] floating enable;
 for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable;
+for_window [title="(?:Open|Save) (?:File|Folder|As)"] resize set 1920 1080
 for_window [title="(?:Open|Save) (?:File|Folder|As)"] resize set 1920 1080
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
